@@ -47,16 +47,40 @@ namespace ByteBank.Forum.Controllers
 
                 novoUsuario.Email = modelo.Email;
                 novoUsuario.UserName = modelo.UserName;
-                //novoUsuario.NomeCompleto = modelo.NomeCompleto;
+                novoUsuario.NomeCompleto = modelo.NomeCompleto;
 
-                await UserManager.CreateAsync(novoUsuario, modelo.Senha);
+                var usuario = UserManager.FindById(modelo.Email);
+                var usuarioJaExiste = usuario != null;
 
+                if (usuarioJaExiste)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                var resultado = await UserManager.CreateAsync(novoUsuario, modelo.Senha);
+
+                if (resultado.Succeeded)
+                {
                 // Podemos incluir o usuário
                 return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    AdicionaErros(resultado);
+                }
+
             }
 
             // Alguma coisa de errado aconteceu!
             return View(modelo);
+        }
+
+        private void AdicionaErros(IdentityResult resultado)
+        {
+            foreach (var erro in resultado.Errors)
+            {
+                ModelState.AddModelError("", erro);
+            }
         }
     }
 }
