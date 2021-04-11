@@ -48,3 +48,17 @@ C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\ob
 C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\obj\Debug\ByteBank.Forum.csproj.CopyComplete
 C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\obj\Debug\ByteBank.Forum.dll
 C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\obj\Debug\ByteBank.Forum.pdb
+C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\bin\Microsoft.Owin.dll
+C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\bin\Microsoft.Owin.Security.dll
+C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\bin\Owin.dll
+C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\bin\Microsoft.Owin.xml
+C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\bin\Microsoft.Owin.Security.xml
+C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\ByteBank.Forum\obj\Debug\ByteBank.Forum.csprojAssemblyReference.cache

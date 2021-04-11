@@ -2,6 +2,7 @@
 using ByteBank.Forum.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,25 @@ namespace ByteBank.Forum.Controllers
 {
     public class ContaController : Controller
     {
+        private UserManager<UsuarioAplicacao> _userManager;
+        public UserManager<UsuarioAplicacao> UserManager
+        {
+            get
+            {
+                if (_userManager == null)
+                {
+                    var contextOwin = HttpContext.GetOwinContext();
+                    _userManager = contextOwin.GetUserManager<UserManager<UsuarioAplicacao>>();
+                }
+                return _userManager;
+            }
+            set
+            {
+                _userManager = value;
+            }
+        }
+
+
         public ActionResult Registrar()
         {
             return View();
@@ -21,20 +41,16 @@ namespace ByteBank.Forum.Controllers
         [HttpPost]
         public async Task<ActionResult> Registrar(ContaRegistrarViewModel modelo)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var dbContext = new IdentityDbContext<UsuarioAplicacao>("DefaultConnection");
-                var userStore = new UserStore<UsuarioAplicacao>(dbContext);
-                var userManager = new UserManager<UsuarioAplicacao>(userStore);
-
                 var novoUsuario = new UsuarioAplicacao();
 
                 novoUsuario.Email = modelo.Email;
                 novoUsuario.UserName = modelo.UserName;
-                novoUsuario.NomeCompleto = modelo.NomeCompleto;
+                //novoUsuario.NomeCompleto = modelo.NomeCompleto;
 
-                await userManager.CreateAsync(novoUsuario, modelo.Senha);
-                
+                await UserManager.CreateAsync(novoUsuario, modelo.Senha);
+
                 // Podemos incluir o usuário
                 return RedirectToAction("Index", "Home");
             }
