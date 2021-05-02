@@ -61,3 +61,4 @@ C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\obj\Debug\ByteBan
 C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\obj\Debug\ByteBank.Forum.csproj.CopyComplete
 C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\obj\Debug\ByteBank.Forum.dll
 C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\obj\Debug\ByteBank.Forum.pdb
+C:\Users\mathf\Documents\Clone\ASP.NET Identity\ByteBank.Forum\obj\Debug\ByteBank.Forum.csprojAssemblyReference.cache

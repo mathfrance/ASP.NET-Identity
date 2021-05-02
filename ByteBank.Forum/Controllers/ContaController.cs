@@ -2,9 +2,6 @@
 using ByteBank.Forum.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -20,7 +17,7 @@ namespace ByteBank.Forum.Controllers
         {
             get
             {
-                if(_userManager == null)
+                if (_userManager == null)
                 {
                     var contextOwin = HttpContext.GetOwinContext();
                     _userManager = contextOwin.GetUserManager<UserManager<UsuarioAplicacao>>();
@@ -33,6 +30,24 @@ namespace ByteBank.Forum.Controllers
             }
         }
 
+        private SignInManager<UsuarioAplicacao, string> _signInManager;
+        public SignInManager<UsuarioAplicacao, string> SignInManager
+        {
+            get
+            {
+                if (_signInManager == null)
+                {
+                    var contextOwin = HttpContext.GetOwinContext();
+                    _signInManager = contextOwin.GetUserManager<SignInManager<UsuarioAplicacao, string>>();
+                }
+                return _signInManager;
+            }
+            set
+            {
+                _signInManager = value;
+            }
+        }
+
         public ActionResult Registrar()
         {
             return View();
@@ -41,7 +56,7 @@ namespace ByteBank.Forum.Controllers
         [HttpPost]
         public async Task<ActionResult> Registrar(ContaRegistrarViewModel modelo)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var novoUsuario = new UsuarioAplicacao();
 
@@ -102,7 +117,46 @@ namespace ByteBank.Forum.Controllers
             else
                 return View("Error");
         }
-        
+
+        [HttpGet]
+        public async Task<ActionResult> Login(string usuarioId, string token)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Login(ContaLoginViewModel modelo)
+        {
+            if (ModelState.IsValid)
+            {
+                var usuario = await UserManager.FindByEmailAsync(modelo.Email);
+
+                if (usuario == null) SenhaOuUsuarioInvalidos();
+
+                var singInResultado = await SignInManager.PasswordSignInAsync(
+                    usuario.UserName,
+                    modelo.Senha,
+                    modelo.ContinuarLogado,
+                    false);
+
+                switch (singInResultado)
+                {
+                    case SignInStatus.Success:
+                        return RedirectToAction("Index", "Home");
+                    default:
+                        return SenhaOuUsuarioInvalidos();
+                }
+
+            }
+            return View(modelo);
+        }
+
+        private ActionResult SenhaOuUsuarioInvalidos()
+        {
+            ModelState.AddModelError("", "Credenciais Inválidas!");
+            return View("Login");
+        }
+
         private void AdicionaErros(IdentityResult resultado)
         {
             foreach (var erro in resultado.Errors)
