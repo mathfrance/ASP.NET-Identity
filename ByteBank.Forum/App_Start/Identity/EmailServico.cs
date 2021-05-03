@@ -28,7 +28,7 @@ namespace ByteBank.Forum.App_Start.Identity
                 // SMTP - Simple Mail Transfer Protocol
                 using (var smtpClient = new SmtpClient())
                 {
-                    smtpClient.UseDefaultCredentials = true;
+                    smtpClient.UseDefaultCredentials = false;
                     smtpClient.Credentials = new NetworkCredential(EMAIL_ORIGEM, EMAIL_SENHA);
 
                     smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
